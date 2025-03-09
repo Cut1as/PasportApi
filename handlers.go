@@ -5,14 +5,8 @@ import (
 	"net/http"
 )
 
-// passportHandler – ручка (обработчик) для получения паспортных данных
-func passportHandler(w http.ResponseWriter, r *http.Request) {
-	passport := Passport{
-		FirstName: "Михаил",
-		LastName:  "Круглый",
-		Number:    "1234 567890",
-	}
-
+// Ручка (обработчик), который возвращает все паспорта
+func getPassportsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(passport)
+	json.NewEncoder(w).Encode(passports) // Кодируем массив в JSON и отправляем
 }
